@@ -1,0 +1,4 @@
+<tool name="g4hepemstatic" version="@TOOL_VERSION@" revision="2">
+  <lib name="g4hepem-static"/>
+  <use name="g4hepem_interface"/>
+</tool>

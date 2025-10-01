@@ -1,0 +1,22 @@
+<tool name="@TOOL@" version="@TOOL_VERSION@" revision="5">
+  <info url="https://docs.nvidia.com/cuda/index.html"/>
+  <use name="cuda-interface"/>
+  <use name="cuda-stubs"/>
+  <lib name="cudart"/>
+  <lib name="cudadevrt"/>
+  <client>
+    <environment name="@TOOL_BASE@" default="@TOOL_ROOT@"/>
+    <environment name="NVCC"      default="$@TOOL_BASE@/bin/nvcc"/>
+  </client>
+  <flags CUDA_FLAGS="@CUDA_FLAGS@"/>
+  <flags REM_CUDA_HOST_CXXFLAGS="-std=%"/>
+  <flags REM_CUDA_HOST_CXXFLAGS="%potentially-evaluated-expression"/>
+  <flags CUDA_HOST_CXXFLAGS="@CUDA_HOST_CXXFLAGS@"/>
+%if "%{default_microarch_name}"
+%if "%{default_microarch_name}" != "%{min_microarch_name}"
+  <flags REM_CUDA_HOST_CXXFLAGS="-march=%%"/>
+  <flags CUDA_HOST_CXXFLAGS="-march=%{min_microarch_name}"/>
+%endif
+%endif
+  <lib name="cudadevrt" type="cuda"/>
+</tool>

@@ -1,0 +1,14 @@
+<tool name="@TOOL@" version="@TOOL_VERSION@" revision="2">
+  <lib name="EvtGen"/>
+  <lib name="EvtGenExternal"/>
+  <client>
+    <environment name="@TOOL_BASE@" default="@TOOL_ROOT@"/>
+    <environment name="LIBDIR" default="$@TOOL_BASE@/lib"/>
+    <environment name="INCLUDE" default="$@TOOL_BASE@/include"/>
+  </client>
+  <runtime name="EVTGENDATA" value="$@TOOL_BASE@/share/EvtGen"/>
+  <use name="hepmc"/>
+  <use name="pythia8"/>
+  <use name="tauolapp"/>
+  <use name="photospp"/>
+</tool>

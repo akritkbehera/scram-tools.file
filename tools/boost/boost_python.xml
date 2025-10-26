@@ -6,5 +6,5 @@
     <environment name="LIBDIR" default="$BOOST_PYTHON_BASE/lib"/>
   </client>
   <use name="boost_header"/>
-  <use name="python3"/>
+  <use name="Python"/>
 </tool>

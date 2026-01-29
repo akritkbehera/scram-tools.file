@@ -6,7 +6,7 @@
     <environment name="LIBDIR"      default="$@TOOL_BASE@/lib"/>
   </client>
   <runtime name="PATH" value="$@TOOL_BASE@/bin" type="path"/>
-%if 0%{!?without_cuda:1}%{!?without_rocm:1}
+#if !defined(without_cuda) && !defined(without_rocm)
   <runtime name="HWLOC_PLUGINS_PATH" value="$@TOOL_BASE@/lib/hwloc" type="path"/>
-%endif
+#endif
 </tool>

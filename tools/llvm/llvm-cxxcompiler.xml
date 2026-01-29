@@ -1,11 +1,9 @@
-  <tool name="llvm-cxxcompiler" version="@TOOL_VERSION@" type="compiler" revision="2">
+  <tool name="@TOOL_FILENAME@" version="@TOOL_VERSION@" type="compiler" revision="2">
     <use name="gcc-cxxcompiler"/>
     <client>
       <environment name="LLVM_CXXCOMPILER_BASE" default="@TOOL_ROOT@"/>
       <environment name="CXX" value="$LLVM_CXXCOMPILER_BASE/bin/clang++"/>
     </client>
-    # drop flags not supported by llvm
-    # -Wno-non-template-friend removed since it's not supported, yet, by llvm.
     <flags REM_CXXFLAGS="-Wno-non-template-friend"/>
     <flags REM_CXXFLAGS="-Werror=format-contains-nul"/>
     <flags REM_CXXFLAGS="-Werror=maybe-uninitialized"/>

@@ -14,8 +14,8 @@
   <use name="geant4core"/>
   <use name="expat"/>
   <use name="xerces-c"/>
-%if %{enable_vecgeom}
+#ifdef ENABLE_VECGEOM
   <use name="vecgeom_interface"/>
   <use name="vecgeom"/>
-%endif
+#endif
 </tool>

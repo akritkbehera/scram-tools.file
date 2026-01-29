@@ -1,4 +1,4 @@
-<tool name="geant4_interface" version="@TOOL_VERSION@" revision="1">
+<tool name="@TOOL_FILENAME@" version="@TOOL_VERSION@" revision="1">
   <info url="http://geant4.web.cern.ch/geant4/"/>
   <flags CXXFLAGS="-ftls-model=global-dynamic -pthread"/>
   <client>
@@ -9,9 +9,9 @@
   <runtime name="ROOT_INCLUDE_PATH"  value="$INCLUDE" type="path"/>
   <flags cppdefines="GNU_GCC G4V9"/>
   <use name="clhep"/>
-%if %{enable_vecgeom}
+#if ENABLE_VECGEOM
   <use name="vecgeom"/>
-%endif
+#endif
   <use name="zlib"/>
   <use name="expat"/>
   <use name="xerces-c"/>

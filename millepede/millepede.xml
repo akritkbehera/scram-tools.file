@@ -1,0 +1,8 @@
+<tool revision="3">
+  <info url="https://millepede.pages.desy.de/millepede-ii/"/>
+  <runtime name="PATH" value="$TOOL_BASE/bin" type="path"/>
+  <use name="sockets"/>
+  <use name="pcre"/>
+  <use name="root"/>
+  <use name="mille"/>
+</tool>

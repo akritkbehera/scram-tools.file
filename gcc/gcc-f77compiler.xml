@@ -1,0 +1,12 @@
+include(`macros.m4')dnl
+  <tool type="compiler" revision="2">
+    <lib name="gfortran"/>
+    <lib name="m"/>
+    <client>
+      IFENV(`<environment name="FC" default="gfortran"/>',`<environment name="FC" default="@GCC_ROOT@/bin/gfortran"/>',`GCC_ROOT')
+    </client>
+    <flags FFLAGS="-fno-second-underscore -Wunused -Wuninitialized -O3 @GCC_FFLAGS@"/>
+    <flags FFLAGS="-std=legacy"/>
+    <flags FOPTIMISEDFLAGS="-O3 @GCC_FOPTIMISEDFLAGS@"/>
+    <flags FSHAREDOBJECTFLAGS="-fPIC @GCC_FSHAREDOBJECTFLAGS@"/>
+  </tool>

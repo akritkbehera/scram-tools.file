@@ -1,0 +1,12 @@
+<tool revision="3">
+  <lib name="onnxruntime"/>
+  <client>
+    <environment name="INCLUDE" default="$TOOL_BASE/include"/>
+    <environment name="LIBDIR" default="$TOOL_BASE/lib"/>
+  </client>
+  <use name="protobuf"/>
+  <use name="cuda"/>
+  <use name="cudnn"/>
+  <use name="re2"/>
+  <runtime name="MLAS_DYNAMIC_CPU_ARCH" value="2"/>
+</tool>

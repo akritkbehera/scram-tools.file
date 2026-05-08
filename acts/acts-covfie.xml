@@ -1,0 +1,6 @@
+<tool revision="2">
+  <info url="https://acts.readthedocs.io/en/latest/plugins/plugins.html"/>
+  <lib name="ActsPluginCovfie"/>
+  <use name="acts-core"/>
+  <use name="covfie"/>
+</tool>

@@ -1,0 +1,5 @@
+  <tool version="system" revision="2">
+    <lib name="GL"/>
+    <lib name="GLU"/>
+    <use name="x11"/>
+  </tool>

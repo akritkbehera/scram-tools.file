@@ -1,0 +1,7 @@
+<tool revision="3">
+  <client>
+    <environment name="INCLUDE" default="$TOOL_BASE/include"/>
+  </client>
+  <use name="json"/>
+</tool>
+

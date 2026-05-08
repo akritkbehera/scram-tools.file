@@ -1,0 +1,9 @@
+  include(`macros.m4')dnl 
+  <tool path="@GCC_PLUGIN_DIR@" revision="3">
+    <lib name="cc1plugin cp1plugin"/>
+    <client>
+      <environment name="INCLUDE"   default="$TOOL_BASE/include"/>
+      <environment name="LIBDIR"    default="$TOOL_BASE"/>
+    </client>
+    IFENV(`',`<flags SKIP_TOOL_SYMLINKS="1"/>',`GCC_ROOT')
+  </tool>

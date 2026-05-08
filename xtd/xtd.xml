@@ -1,0 +1,6 @@
+<tool revision="2">
+  <client>
+    <environment name="INCLUDE"        default="$TOOL_BASE/include"/>
+  </client>
+  <runtime name="ROOT_INCLUDE_PATH" value="$INCLUDE" type="path"/>
+</tool>

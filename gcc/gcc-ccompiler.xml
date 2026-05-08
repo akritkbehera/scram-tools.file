@@ -1,0 +1,8 @@
+  include(`macros.m4')dnl
+  <tool type="compiler" revision="2">
+    <client>
+      IFENV(`<environment name="CC" value="gcc@COMPILER_NAME_SUFFIX@"/>',`<environment name="CC" value="$TOOL_BASE/bin/gcc@COMPILER_NAME_SUFFIX@"/>',`GCC_ROOT')
+    </client>
+    <flags CSHAREDOBJECTFLAGS="-fPIC @GCC_CSHAREDOBJECTFLAGS@"/>
+    <flags CFLAGS="-O3 -pthread @GCC_CFLAGS@"/>
+  </tool>

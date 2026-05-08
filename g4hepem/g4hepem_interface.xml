@@ -1,0 +1,8 @@
+<tool revision="4">
+  <info url="https://github.com/mnovak42/g4hepem"/>
+  <client>
+    <environment name="LIBDIR" default="$TOOL_BASE/lib64"/>
+    <environment name="INCLUDE" default="$TOOL_BASE/include/G4HepEm"/>
+  </client>
+  <use name="geant4core"/>
+</tool>

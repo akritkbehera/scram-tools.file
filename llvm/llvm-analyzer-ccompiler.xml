@@ -1,0 +1,6 @@
+  <tool type="compiler" revision="2">
+    <use name="llvm-ccompiler"/>
+    <client>
+      <environment name="CC" value="$TOOL_BASE/bin/ccc-analyzer"/>
+    </client>
+  </tool>

@@ -1,0 +1,6 @@
+  <tool type="compiler" revision="3">
+    <use name="gcc-ccompiler"/>
+    <client>
+      <environment name="CC" value="$TOOL_BASE/bin/clang"/>
+    </client>
+  </tool>

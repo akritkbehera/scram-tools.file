@@ -1,0 +1,3 @@
+  <tool version="system" revision="2">
+    <use name="sockets"/>
+  </tool>

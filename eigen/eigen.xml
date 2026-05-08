@@ -1,0 +1,9 @@
+<tool revision="3">
+  <client>
+    <environment name="INCLUDE"      default="$TOOL_BASE/include"/>
+    <environment name="INCLUDE"      default="$TOOL_BASE/include/eigen3"/>
+  </client>
+  <runtime name="ROOT_INCLUDE_PATH"  value="$INCLUDE" type="path"/>
+  <flags CXXFLAGS="@CMS_EIGEN_CXX_FLAGS@"/>
+  <flags CUDA_FLAGS="--diag-suppress 20014"/>
+</tool>

@@ -1,0 +1,9 @@
+<tool revision="3">
+  <client>
+    <environment name="LIBDIR" default="$TOOL_BASE/lib"/>
+  </client>
+  <lib name="tf_xla_runtime"/>
+
+  <use name="eigen"/>
+  <use name="tensorflow-includes"/>
+</tool>

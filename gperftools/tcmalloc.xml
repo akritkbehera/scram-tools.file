@@ -1,0 +1,6 @@
+<tool revision="2">
+  <lib name="tcmalloc"/>
+  <client>
+    <environment name="LIBDIR"        default="$TOOL_BASE/lib"/>
+  </client>
+</tool>

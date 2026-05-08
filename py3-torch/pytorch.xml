@@ -1,0 +1,12 @@
+<tool revision="5">
+  <client>
+    <environment name="INCLUDE" default="$TOOL_BASE/include"/>
+    <environment name="INCLUDE" default="$TOOL_BASE/include/torch/csrc/api/include"/>
+    <environment name="LIBDIR" default="$TOOL_BASE/lib"/>
+  </client>
+  <lib name="torch"/>
+  <lib name="torch_cpu"/>
+  <lib name="c10"/>
+  <flags FORCE_LINK="1"/>
+  <use name="pytorch-interface"/>
+</tool>

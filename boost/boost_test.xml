@@ -1,0 +1,5 @@
+<tool revision="2">
+  <info url="http://www.boost.org"/>
+  <lib name="boost_unit_test_framework"/>
+  <use name="boost"/>
+</tool>

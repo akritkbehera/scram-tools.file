@@ -1,0 +1,7 @@
+<tool revision="2">
+  <info url="https://docs.nvidia.com/cuda/index.html"/>
+  <client>
+    <environment name="LIBDIR" default="$TOOL_BASE/drivers"/>
+  </client>
+  <flags SKIP_TOOL_SYMLINKS="1"/>
+</tool>

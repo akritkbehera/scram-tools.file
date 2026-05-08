@@ -1,0 +1,6 @@
+<tool revision="3">
+  <info url="https://github.com/bkryza/clang-uml/"/>
+  <runtime name="PATH" value="$TOOL_BASE/bin" type="path"/>
+  <use name="yaml-cpp"/>
+  <use name="zlib"/>
+</tool>

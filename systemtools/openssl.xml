@@ -1,0 +1,4 @@
+  <tool version="system" revision="2">
+    <lib name="ssl"/>
+    <lib name="crypto"/>
+  </tool>

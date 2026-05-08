@@ -1,0 +1,9 @@
+<tool revision="3">
+  <lib name="YODA"/>
+  <client>
+    <environment name="LIBDIR" default="$TOOL_BASE/lib"/>
+    <environment name="INCLUDE" default="$TOOL_BASE/include"/>
+  </client>
+  <use name="root_cxxdefaults"/>
+  <runtime name="PATH"       value="$TOOL_BASE/bin" type="path"/>
+</tool>

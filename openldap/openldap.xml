@@ -1,0 +1,6 @@
+<tool revision="3">
+  <client>
+    <environment name="LIBDIR" default="$TOOL_BASE/lib"/>
+  </client>
+  <use name="db6"/>
+</tool>

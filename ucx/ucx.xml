@@ -1,0 +1,12 @@
+<tool revision="4">
+  <lib name="ucp"/>
+  <lib name="uct"/>
+  <lib name="ucs"/>
+  <lib name="ucm"/>
+  <client>
+    <environment name="INCLUDE"  default="$TOOL_BASE/include"/>
+    <environment name="LIBDIR"   default="$TOOL_BASE/lib"/>
+  </client>
+  <runtime name="PATH" value="$TOOL_BASE/bin" type="path"/>
+  <runtime name="UCX_HANDLE_ERRORS" value="none"/>
+</tool>

@@ -2,11 +2,11 @@
     <lib name="gfortran"/>
     <lib name="m"/>
     <client>
-%if 0%{!?use_system_gcc:1}
+#ifdef GCC_ROOT
       <environment name="FC" default="$TOOL_BASE/bin/gfortran"/>
-%else
+#else
       <environment name="FC" default="gfortran"/>
-%endif
+#endif
     </client>
     <flags FFLAGS="-fno-second-underscore -Wunused -Wuninitialized -O3 @GCC_FFLAGS@"/>
     <flags FFLAGS="-std=legacy -Wno-unused-variable"/>

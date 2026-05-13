@@ -1,10 +1,10 @@
   <tool type="compiler" revision="2">
     <client>
-%if 0%{!?use_system_gcc:1}
+#if GCC_ROOT
       <environment name="CC" value="$TOOL_BASE/bin/gcc@COMPILER_NAME_SUFFIX@"/>
-%else
+#else
       <environment name="CC" value="gcc@COMPILER_NAME_SUFFIX@"/>
-%endif
+#endif
     </client>
     <flags CSHAREDOBJECTFLAGS="-fPIC @GCC_CSHAREDOBJECTFLAGS@"/>
     <flags CFLAGS="-O3 -pthread @GCC_CFLAGS@"/>

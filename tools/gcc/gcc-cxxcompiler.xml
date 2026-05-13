@@ -1,17 +1,17 @@
   <tool type="compiler" revision="2">
     <client>
-%if 0%{!?use_system_gcc:1}
+#ifdef GCC_ROOT
       <environment name="CXX" value="$TOOL_BASE/bin/c++@COMPILER_NAME_SUFFIX@"/>
-%else
+#else
       <environment name="CXX" value="c++@COMPILER_NAME_SUFFIX@"/>
-%endif
+#endif
     </client>
     <flags CPPDEFINES="GNU_GCC _GNU_SOURCE @GCC_CPPDEFINES@"/>
     <flags CXXSHAREDOBJECTFLAGS="-fPIC @GCC_CXXSHAREDOBJECTFLAGS@"/>
     <flags CXXFLAGS="-O3 -pthread -pipe -Werror=main -Werror=pointer-arith"/>
-%if 0%{?enable_frame_pointer}
+#if ENABLE_FRAME_POINTER
     <flags CXXFLAGS="-fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"/>
-%endif
+#endif
     <flags CXXFLAGS="-Werror=overlength-strings -Wno-vla @GCC_CXXFLAGS@"/>
     <flags CXXFLAGS="-felide-constructors -fmessage-length=0"/>
     <flags CXXFLAGS="-Wall -Wno-non-template-friend -Wno-long-long -Wreturn-type"/>
@@ -39,14 +39,12 @@
     <flags CXXSHAREDFLAGS="@GCC_SHAREDFLAGS@"/>
     <flags LD_UNIT="@GCC_LD_UNIT@"/>
     <runtime name="SCRAM_CXX11_ABI" value="@SCRAM_CXX11_ABI@"/>
-%if 0%{!?use_system_gcc:1}
+#if GCC_ROOT
     <runtime name="@OS_RUNTIME_LDPATH_NAME@" value="$TOOL_BASE/@OS_LIB64DIR@" type="path"/>
     <runtime name="@OS_RUNTIME_LDPATH_NAME@" value="$TOOL_BASE/lib" type="path"/>
     <runtime name="COMPILER_PATH" value="$TOOL_BASE"/>
     <runtime name="PATH" value="$TOOL_BASE/bin" type="path"/>
-%if 0%{?rhel} >= 9
     <runtime name="GPROFNG_SYSCONFDIR" value="$TOOL_BASE/etc"/>
-%endif
     <ifrelease name="ASAN">
       <runtime name="GCC_RUNTIME_ASAN" value="$TOOL_BASE/@OS_LIB64DIR@/libasan.so" type="path"/>
     <elif name="LSAN"/>
@@ -56,5 +54,5 @@
     <elif name="TSAN"/>
       <runtime name="GCC_RUNTIME_TSAN" value="$TOOL_BASE/@OS_LIB64DIR@/libtsan.so" type="path"/>
     </ifrelease>
-%endif
+#endif
   </tool>

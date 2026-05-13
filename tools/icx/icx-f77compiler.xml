@@ -1,11 +1,11 @@
   <tool type="compiler" revision="2">
     <use name="gcc-f77compiler"/>
     <client>
-%if 0%{!?use_system_gcc:1}
+#ifdef GCC_ROOT
       <environment name="FC" default="@GCC_ROOT@/bin/gfortran"/>
-%else
+#else
       <environment name="FC" default="gfortran"/>
-%endif
+#endif
     </client>
     <flags SKIP_TOOL_SYMLINKS="1"/>
   </tool>

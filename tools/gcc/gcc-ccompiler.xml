@@ -1,6 +1,6 @@
   <tool type="compiler" revision="2">
     <client>
-#if GCC_ROOT
+#ifdef GCC_ROOT
       <environment name="CC" value="$TOOL_BASE/bin/gcc@COMPILER_NAME_SUFFIX@"/>
 #else
       <environment name="CC" value="gcc@COMPILER_NAME_SUFFIX@"/>

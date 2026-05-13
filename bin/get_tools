@@ -16,10 +16,10 @@ function copy_tools (){
 }
 export TOOL_ROOT=$1
 export TOOL_VERSION=$2
-export TOOLFILES_INSTALL_DIR=/home/akbehera/Desktop/bitsorg/scram
+export TOOLFILES_INSTALL_DIR=$3
 export TOOL=$4
 export SCRAM_TOOLS_BIN_DIR=$(dirname $(realpath ${0}))
-export SCRAM_TOOL_SOURCE_DIR=/home/akbehera/Desktop/bitsorg/scram/$4
+export SCRAM_TOOL_SOURCE_DIR=$(realpath ${SCRAM_TOOLS_BIN_DIR}/../tools)/$4
 
 [ -d ${TOOLFILES_INSTALL_DIR}/tools/selected ] || mkdir -p ${TOOLFILES_INSTALL_DIR}/tools/selected
 if [ -d $SCRAM_TOOL_SOURCE_DIR ] ; then
@@ -32,5 +32,4 @@ if [ -d $SCRAM_TOOL_SOURCE_DIR ] ; then
 fi
 if [ -d ${TOOL_ROOT}/etc/scram.d ] ; then
     copy_tools ${TOOL_ROOT}/etc/scram.d
-fi 
- 
+fi

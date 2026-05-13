@@ -39,7 +39,7 @@
     <flags CXXSHAREDFLAGS="@GCC_SHAREDFLAGS@"/>
     <flags LD_UNIT="@GCC_LD_UNIT@"/>
     <runtime name="SCRAM_CXX11_ABI" value="@SCRAM_CXX11_ABI@"/>
-#if GCC_ROOT
+#ifdef GCC_ROOT
     <runtime name="@OS_RUNTIME_LDPATH_NAME@" value="$TOOL_BASE/@OS_LIB64DIR@" type="path"/>
     <runtime name="@OS_RUNTIME_LDPATH_NAME@" value="$TOOL_BASE/lib" type="path"/>
     <runtime name="COMPILER_PATH" value="$TOOL_BASE"/>

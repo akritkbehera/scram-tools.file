@@ -1,0 +1,6 @@
+<tool revision="2">
+  <info url="https://github.com/acts-project/actsvg/blob/main/README.md"/>
+  <lib name="actsvg_core"/>
+  <lib name="actsvg_meta"/>
+  <use name="acts-common"/>
+</tool>

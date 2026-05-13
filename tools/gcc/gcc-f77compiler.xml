@@ -1,0 +1,15 @@
+  <tool type="compiler" revision="2">
+    <lib name="gfortran"/>
+    <lib name="m"/>
+    <client>
+%if 0%{!?use_system_gcc:1}
+      <environment name="FC" default="$TOOL_BASE/bin/gfortran"/>
+%else
+      <environment name="FC" default="gfortran"/>
+%endif
+    </client>
+    <flags FFLAGS="-fno-second-underscore -Wunused -Wuninitialized -O3 @GCC_FFLAGS@"/>
+    <flags FFLAGS="-std=legacy -Wno-unused-variable"/>
+    <flags FOPTIMISEDFLAGS="-O3 @GCC_FOPTIMISEDFLAGS@"/>
+    <flags FSHAREDOBJECTFLAGS="-fPIC @GCC_FSHAREDOBJECTFLAGS@"/>
+  </tool>

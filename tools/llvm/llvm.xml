@@ -1,0 +1,12 @@
+  <tool revision="3">
+    <lib name="clang"/>
+    <client>
+      <environment name="LIBDIR" default="$TOOL_BASE/lib64"/>
+      <environment name="INCLUDE" default="$TOOL_BASE/include"/>
+    </client>
+    <flags LDFLAGS="-Wl,-undefined -Wl,suppress"/>
+    <flags CXXFLAGS="-D_DEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS"/>
+    <flags CXXFLAGS="-D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -O3 "/>
+    <flags CXXFLAGS="-fomit-frame-pointer -fPIC -Wno-enum-compare "/>
+    <flags CXXFLAGS="-Wno-strict-aliasing -fno-rtti"/>
+  </tool>

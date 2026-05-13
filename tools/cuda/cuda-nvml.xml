@@ -1,0 +1,5 @@
+<tool revision="2">
+  <info url="https://docs.nvidia.com/deploy/nvml-api/index.html"/>
+  <use name="cuda-stubs"/>
+  <lib name="nvidia-ml"/>
+</tool>

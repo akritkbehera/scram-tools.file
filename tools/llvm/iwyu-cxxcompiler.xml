@@ -1,0 +1,6 @@
+  <tool type="compiler" revision="2">
+    <use name="llvm-cxxcompiler"/>
+    <client>
+      <environment name="CXX" value="$TOOL_BASE/bin/include-what-you-use"/>
+    </client>
+  </tool>

@@ -1,0 +1,9 @@
+<tool revision="3">
+  <info url="https://docs.nvidia.com/cuda/index.html"/>
+  <lib name="cuda"/>
+  <use name="cuda-interface"/>
+  <client>
+    <environment name="LIBDIR"          default="$TOOL_BASE/lib64/stubs"/>
+  </client>
+  <flags SKIP_TOOL_SYMLINKS="1"/>
+</tool>

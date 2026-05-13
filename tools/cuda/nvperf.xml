@@ -1,0 +1,6 @@
+<tool revision="3">
+  <info url="https://docs.nvidia.com/cupti/Cupti/index.html"/>
+  <lib name="nvperf_host"/>
+  <lib name="nvperf_target"/>
+  <use name="cuda-interface"/>
+</tool>

@@ -1,0 +1,9 @@
+<tool revision="3">
+  <info url="https://github.com/google/benchmark"/>
+  <lib name="benchmark"/>
+  <client>
+    <environment name="LIBDIR"      default="$TOOL_BASE/lib64"/>
+    <environment name="INCLUDE"     default="$TOOL_BASE/include"/>
+  </client>
+  <use name="sockets"/>
+</tool>

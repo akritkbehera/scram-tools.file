@@ -1,0 +1,10 @@
+<tool revision="2">
+  <info url="http://threadingbuildingblocks.org"/>
+  <use name="tbb"/>
+  <lib name="tbbbind_2_0"/>
+  <client>
+    <environment name="LIBDIR"       default="$TOOL_BASE/lib"/>
+    <environment name="INCLUDE"      default="$TOOL_BASE/include"/>
+  </client>
+  <flags SYSTEM_INCLUDE="1"/>
+</tool>

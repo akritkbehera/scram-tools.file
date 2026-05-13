@@ -1,0 +1,9 @@
+<tool revision="2">
+  <lib name="CSCTrackFinderEmulation"/>
+  <client>
+    <environment name="LIBDIR" default="$TOOL_BASE/lib64"/>
+    <environment name="INCLUDE" default="$TOOL_BASE/include"/>
+  </client>
+  <runtime name="CSC_TRACK_FINDER_DATA_DIR" default="$TOOL_BASE/data/"/>
+  <runtime name="CMSSW_SEARCH_PATH" default="$TOOL_BASE/data" type="path"/>
+</tool>

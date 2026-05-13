@@ -1,0 +1,6 @@
+  <tool type="compiler" revision="2">
+    <use name="gcc-ccompiler"/>
+    <client>
+      <environment name="CC" value="$TOOL_BASE/bin/gcc"/>
+    </client>
+  </tool>

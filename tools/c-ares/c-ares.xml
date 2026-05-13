@@ -1,0 +1,9 @@
+<tool revision="3">
+  <info url="https://c-ares.org/"/>
+  <lib name="cares"/>
+  <client>
+    <environment name="LIBDIR" default="$TOOL_BASE/lib"/>
+    <environment name="INCLUDE" default="$TOOL_BASE/include"/>
+  </client>
+</tool>
+

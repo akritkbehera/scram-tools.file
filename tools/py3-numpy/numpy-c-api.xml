@@ -1,0 +1,9 @@
+<tool revision="2">
+  <lib name="npymath"/>
+  <client>
+    <environment name="INCLUDE" default="$TOOL_BASE/c-api/core/include"/>
+    <environment name="LIBDIR" default="$TOOL_BASE/c-api/core/lib"/>
+  </client>
+  <runtime name="ROOT_INCLUDE_PATH" value="$INCLUDE" type="path"/>
+  <use name="root_cxxdefaults"/>
+</tool>

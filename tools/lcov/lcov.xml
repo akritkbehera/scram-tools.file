@@ -1,0 +1,4 @@
+<tool revision="3">
+  <info url="http://ltp.sourceforge.net/coverage/lcov.php"/>
+  <runtime name="PATH" value="$TOOL_BASE/bin" type="path"/>
+</tool>

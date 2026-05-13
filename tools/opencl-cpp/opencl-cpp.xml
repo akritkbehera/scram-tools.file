@@ -1,0 +1,7 @@
+<tool revision="3">
+  <info url="http://www.khronos.org/registry/cl/"/>
+  <client>
+    <environment name="INCLUDE" default="$TOOL_BASE/include"/>
+  </client>
+  <use name="opencl"/>
+</tool>

@@ -1,0 +1,13 @@
+<tool revision="3">
+  <lib name="opencv_core"/>
+  <client>
+    <environment name="INCLUDE" default="$TOOL_BASE/include"/>
+    <environment name="LIBDIR" default="$TOOL_BASE/lib"/>
+    <environment name="BINDIR" default="$TOOL_BASE/bin"/>
+  </client>
+  <use name="libpng"/>
+  <use name="libjpeg-turbo"/>
+  <use name="zlib"/>
+  <use name="eigen"/>
+  <use name="OpenBLAS"/>
+</tool>

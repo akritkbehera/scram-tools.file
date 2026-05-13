@@ -1,0 +1,9 @@
+<tool revision="3">
+  <client>
+    <environment name="LIBDIR" default="$TOOL_BASE/lib"/>
+    <environment name="INCLUDE" default="$TOOL_BASE/include"/>
+  </client>
+  <runtime name="KERAS_BACKEND" value="tensorflow"/>
+  <runtime name="TF_CPP_MIN_LOG_LEVEL" value="3"/>
+  <flags SYSTEM_INCLUDE="1"/>
+</tool>

@@ -1,0 +1,6 @@
+<tool revision="3">
+  <client>
+    <environment name="BINDIR" default="$TOOL_BASE/bin"/>
+  </client>
+  <runtime name="PATH" default="$BINDIR" type="path"/>
+</tool>

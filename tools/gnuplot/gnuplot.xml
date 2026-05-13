@@ -1,0 +1,4 @@
+  <tool revision="3">
+    <info url="http://gnuplot.sourceforge.net"/>
+    <runtime name="PATH" value="$TOOL_BASE/bin" type="path"/>
+  </tool>

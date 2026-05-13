@@ -1,0 +1,5 @@
+<tool revision="2">
+  <info url="http://www.boost.org"/>
+  <lib name="@BOOST_IOSTREAMS_LIB@"/>
+  <use name="boost"/>
+</tool>

@@ -1,0 +1,7 @@
+<tool revision="3">
+  <lib name="ffi"/>
+  <client>
+    <environment name="LIBDIR" default="$TOOL_BASE/lib64"/>
+    <environment name="INCLUDE" default="$TOOL_BASE/include"/>
+  </client>
+</tool>

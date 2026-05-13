@@ -1,0 +1,8 @@
+<tool revision="3">
+  <info url="http://www.research.att.com/sw/tools/graphviz/"/>
+  <runtime name="PATH" value="$TOOL_BASE/bin" type="path"/>
+  <use name="expat"/>
+  <use name="zlib"/>
+  <use name="libjpeg-turbo"/>
+  <use name="libpng"/>
+</tool>

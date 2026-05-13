@@ -1,0 +1,3 @@
+<tool revision="3">
+  <use name="openmpi"/>
+</tool>

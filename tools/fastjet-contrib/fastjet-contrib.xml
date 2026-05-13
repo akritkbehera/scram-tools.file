@@ -1,0 +1,8 @@
+  <tool revision="3">
+    <info url="http://fastjet.hepforge.org/contrib/"/>
+    <lib name="fastjetcontribfragile"/>
+    <client>
+      <environment name="LIBDIR" default="$TOOL_BASE/lib"/>
+      <environment name="INCLUDE" default="$TOOL_BASE/include"/>
+    </client>
+  </tool>

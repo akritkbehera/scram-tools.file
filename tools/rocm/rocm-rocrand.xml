@@ -1,0 +1,6 @@
+<tool revision="2">
+  <info url="https://rocm.docs.amd.com/projects/rocRAND/en/docs-@TOOL_REALVERSION@/"/>
+  <use name="rocm"/>
+  <lib name="hiprand"/>
+  <lib name="rocrand"/>
+</tool>

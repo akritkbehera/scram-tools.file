@@ -1,0 +1,5 @@
+  <tool version="system" revision="2">
+    <lib name="crypt"/>
+    <lib name="dl"/>
+    <lib name="rt"/>
+  </tool>

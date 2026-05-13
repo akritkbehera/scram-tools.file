@@ -1,0 +1,9 @@
+<tool revision="2">
+  <info url="http://root.cern.ch/root/"/>
+  <lib name="ROOTDataFrame"/>
+  <use name="rootcore"/>
+  <use name="rootgraphics"/>
+  <use name="roothistmatrix"/>
+  <use name="rootrio"/>
+  <use name="rootvecops"/>
+</tool>

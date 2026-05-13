@@ -1,0 +1,4 @@
+<tool revision="3">
+  <lib name="g4hepem-static"/>
+  <use name="g4hepem_interface"/>
+</tool>

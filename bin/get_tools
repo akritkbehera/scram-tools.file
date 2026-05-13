@@ -1,0 +1,36 @@
+#!/bin/bash -ex
+#Usage: get_tool <tool-install-dir> <tool-version> <directory-to-install-toolfiles> <toolname>
+
+function copy_tools (){
+    for xml in $(find $1 -type f -name "*.xml") ; do
+        bxml=$(basename $xml)
+        export TOOL_FILENAME=$(echo $bxml | sed 's|.xml$||')
+        export TOOL_BASE=$(echo $TOOL_FILENAME | tr 'a-z-' 'A-Z_')_BASE
+        export TOOL_REALVERSION=$(echo $TOOL_VERSION | sed -re 's|-[a-f0-9]{32}$||')
+        [ -f ${TOOLFILES_INSTALL_DIR}/tools/selected/$bxml ] && continue
+        [ -f ${TOOLFILES_INSTALL_DIR}/tools/available/$bxml ] && continue
+        cp $xml ${TOOLFILES_INSTALL_DIR}/tools/selected/${bxml}
+        $SCRAM_TOOLS_BIN_DIR/fix_tool_variables "$TOOLFILES_INSTALL_DIR/tools/selected/$bxml"
+        echo "  Copied $bxml"
+    done
+}
+export TOOL_ROOT=$1
+export TOOL_VERSION=$2
+export TOOLFILES_INSTALL_DIR=/home/akbehera/Desktop/bitsorg/scram
+export TOOL=$4
+export SCRAM_TOOLS_BIN_DIR=$(dirname $(realpath ${0}))
+export SCRAM_TOOL_SOURCE_DIR=/home/akbehera/Desktop/bitsorg/scram/$4
+
+[ -d ${TOOLFILES_INSTALL_DIR}/tools/selected ] || mkdir -p ${TOOLFILES_INSTALL_DIR}/tools/selected
+if [ -d $SCRAM_TOOL_SOURCE_DIR ] ; then
+  #setup tools specific env
+  tool_script=${SCRAM_TOOL_SOURCE_DIR}/env.sh
+  if [ -f $tool_script ]; then source $tool_script; fi
+
+  #Copy all tools and replace the env placeholders @VARIABLES@
+  copy_tools $SCRAM_TOOL_SOURCE_DIR
+fi
+if [ -d ${TOOL_ROOT}/etc/scram.d ] ; then
+    copy_tools ${TOOL_ROOT}/etc/scram.d
+fi 
+ 

@@ -2,7 +2,6 @@
     <ifrelease name="ASAN">
       <flags CPPDEFINES="CMS_ADDRESS_SANITIZER"/>
       <flags CXXFLAGS="-fno-omit-frame-pointer -fsanitize=address"/>
-      <!-- See https://github.com/cms-sw/cmssw/issues/36480 <flags CXXFLAGS="-fsanitize=pointer-compare"/> -->
       <flags CXXFLAGS="-fsanitize=pointer-subtract"/>
     </ifrelease>
   </tool>

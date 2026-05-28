@@ -14,12 +14,8 @@
   <flags ROCM_FLAGS="@ROCM_FLAGS@"/>
   <flags ROCM_FLAGS="-fgpu-rdc"/>
   <flags ROCM_FLAGS="-Wno-pass-failed"/>
-%if "%{default_microarch_name}"
-%if "%{default_microarch_name}" != "%{min_microarch_name}"
   <flags REM_ROCM_HOST_CXXFLAGS="-march=%%"/>
   <flags ROCM_HOST_CXXFLAGS="-march=%{min_microarch_name}"/>
-%endif
-%endif
   <!-- use -isystem instead of -I to silence warnings in the HIP/ROCm headers -->
   <flags SYSTEM_INCLUDE="1"/>
   <runtime name="ROOT_INCLUDE_PATH" value="$INCLUDE" type="path" join="1"/>

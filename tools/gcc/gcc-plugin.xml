@@ -4,7 +4,7 @@
       <environment name="INCLUDE"   default="$TOOL_BASE/include"/>
       <environment name="LIBDIR"    default="$TOOL_BASE"/>
     </client>
-#if %(use_system_gcc:-0)s
+#if %(use_system_gcc)s
     <flags SKIP_TOOL_SYMLINKS="1"/>
 #endif
   </tool>

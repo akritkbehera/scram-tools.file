@@ -1,6 +1,6 @@
   <tool type="compiler" revision="2">
     <client>
-#if %(use_system_gcc:-0)s
+#if %(use_system_gcc)s
       <environment name="CC" value="gcc@COMPILER_NAME_SUFFIX@"/>
 #else
       <environment name="CC" value="$TOOL_BASE/bin/gcc@COMPILER_NAME_SUFFIX@"/>

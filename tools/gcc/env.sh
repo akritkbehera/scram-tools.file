@@ -10,6 +10,10 @@ if [ -n "$GCC_REVISION" ]; then
   export USE_SYSTEM_GCC=0
 fi
 
+if [ -n "$ENABLE_FRAME_POINTER" ]; then
+  export ENABLE_FRAME_POINTER=0
+fi
+
 export TOOL_ROOT=$GCC_ROOT
 export TOOL_VERSION=$GCC_VERSION
 export GCC_PLUGIN_DIR=$(gcc -print-file-name=plugin)

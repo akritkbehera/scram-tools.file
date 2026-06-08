@@ -1,5 +1,5 @@
 <tool revision="2">
-#if %(use_system_gcc)s
+#if @USE_SYSTEM_GCC@
 #else
   <runtime name="ROOT_GCC_TOOLCHAIN" value="@GCC_ROOT@" type="path"/>
 #endif

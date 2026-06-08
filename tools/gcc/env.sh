@@ -5,6 +5,11 @@ then
     GCC_ROOT=$(which gcc | sed -e 's|/bin/gcc||')
     GCC_VERSION=$(gcc -dumpfullversion) || exit 1
 fi
+
+if [ -n "$GCC_REVISION" ]; then
+  export USE_SYSTEM_GCC=0
+fi
+
 export TOOL_ROOT=$GCC_ROOT
 export TOOL_VERSION=$GCC_VERSION
 export GCC_PLUGIN_DIR=$(gcc -print-file-name=plugin)

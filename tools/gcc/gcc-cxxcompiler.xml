@@ -1,6 +1,6 @@
   <tool type="compiler" revision="2">
     <client>
-#if %(use_system_gcc)s
+#if @USE_SYSTEM_GCC@
       <environment name="CXX" value="c++@COMPILER_NAME_SUFFIX@"/>
 #else
       <environment name="CXX" value="$TOOL_BASE/bin/c++@COMPILER_NAME_SUFFIX@"/>
@@ -37,7 +37,7 @@
     <flags CXXSHAREDFLAGS="@GCC_SHAREDFLAGS@"/>
     <flags LD_UNIT="@GCC_LD_UNIT@"/>
     <runtime name="SCRAM_CXX11_ABI" value="@SCRAM_CXX11_ABI@"/>
-#if %(use_system_gcc)s
+#if @USE_SYSTEM_GCC@
 #else
     <runtime name="@OS_RUNTIME_LDPATH_NAME@" value="$TOOL_BASE/@OS_LIB64DIR@" type="path"/>
     <runtime name="@OS_RUNTIME_LDPATH_NAME@" value="$TOOL_BASE/lib" type="path"/>

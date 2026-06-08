@@ -8,7 +8,7 @@
   <runtime name="ROOT_INCLUDE_PATH"  value="$INCLUDE" type="path"/>
   <flags cppdefines="GNU_GCC G4V9"/>
   <use name="clhep"/>
-#if %(enable_vecgeom)s
+#if @ENABLE_VECGEOM@
   <use name="vecgeom"/>
 #endif
   <use name="zlib"/>

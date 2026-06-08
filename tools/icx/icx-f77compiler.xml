@@ -1,7 +1,7 @@
   <tool type="compiler" revision="2">
     <use name="gcc-f77compiler"/>
     <client>
-#if %(use_system_gcc)s
+#if @USE_SYSTEM_GCC@
       <environment name="FC" default="gfortran"/>
 #else
       <environment name="FC" default="@GCC_ROOT@/bin/gfortran"/>

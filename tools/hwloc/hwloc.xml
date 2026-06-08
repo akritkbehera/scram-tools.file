@@ -5,7 +5,7 @@
     <environment name="LIBDIR"      default="$TOOL_BASE/lib"/>
   </client>
   <runtime name="PATH" value="$TOOL_BASE/bin" type="path"/>
-#if %(use_cuda)s || %(use_rocm)s
+#if @USE_CUDA@ || @USE_ROCM@
   <runtime name="HWLOC_PLUGINS_PATH" value="$TOOL_BASE/lib/hwloc" type="path"/>
 #endif
 </tool>

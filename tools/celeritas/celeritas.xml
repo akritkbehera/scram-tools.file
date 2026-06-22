@@ -13,7 +13,7 @@
   <use name="geant4core"/>
   <use name="expat"/>
   <use name="xerces-c"/>
-#if @ENABLE_VECGEOM@
+#ifdef @VECGEOM_REVISION@
   <use name="vecgeom_interface"/>
   <use name="vecgeom"/>
 #endif

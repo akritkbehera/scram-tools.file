@@ -5,15 +5,6 @@ then
     GCC_ROOT=$(which gcc | sed -e 's|/bin/gcc||')
     GCC_VERSION=$(gcc -dumpfullversion) || exit 1
 fi
-
-if [ -n "$GCC_REVISION" ]; then
-  export USE_SYSTEM_GCC=0
-fi
-
-if [ -n "$ENABLE_FRAME_POINTER" ]; then
-  export ENABLE_FRAME_POINTER=0
-fi
-
 export TOOL_ROOT=$GCC_ROOT
 export TOOL_VERSION=$GCC_VERSION
 export GCC_PLUGIN_DIR=$(gcc -print-file-name=plugin)
@@ -43,7 +34,7 @@ source ${SCRAM_TOOLS_BIN_DIR}/os_libdir.sh
 # optimizations as they become available in gcc.
 
 GCC_CXXFLAGS=""
-GCC_CXXFLAGS="$GCC_CXXFLAGS -std=c++${CXXSTD} -ftree-vectorize"
+GCC_CXXFLAGS="$GCC_CXXFLAGS -std=c++${CMS_CXX_STANDARD} -ftree-vectorize"
 GCC_CXXFLAGS="$GCC_CXXFLAGS -Werror=array-bounds -Werror=format-contains-nul -Werror=type-limits"
 GCC_CXXFLAGS="$GCC_CXXFLAGS -fvisibility-inlines-hidden"
 GCC_CXXFLAGS="$GCC_CXXFLAGS -fno-math-errno --param vect-max-version-for-alias-checks=50"
@@ -52,7 +43,7 @@ GCC_CXXFLAGS="$GCC_CXXFLAGS -Xassembler --compress-debug-sections"
 #FIXME: GCC 12/13/14 workaround
 if [[ "$GCC_VERSION" =~ ^12\.[23]\. ]] ; then
   GCC_CXXFLAGS="$GCC_CXXFLAGS -Wno-error=array-bounds -Warray-bounds"
-elif [[ "$GCC_VERSION" =~ ^1[345]\. ]] ; then
+elif [[ "$GCC_VERSION" =~ ^1[3456]\. ]] ; then
   GCC_CXXFLAGS="$GCC_CXXFLAGS -Wno-error=array-bounds -Warray-bounds"  
 fi
 

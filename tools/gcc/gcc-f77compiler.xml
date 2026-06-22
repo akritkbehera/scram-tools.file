@@ -2,14 +2,14 @@
     <lib name="gfortran"/>
     <lib name="m"/>
     <client>
-#ifdef GCC_ROOT
+#ifdef @GCC_REVISION@
       <environment name="FC" default="$TOOL_BASE/bin/gfortran"/>
 #else
       <environment name="FC" default="gfortran"/>
 #endif
     </client>
     <flags FFLAGS="-fno-second-underscore -Wunused -Wuninitialized -O3 @GCC_FFLAGS@"/>
-    <flags FFLAGS="-std=legacy -Wno-unused-variable"/>
+    <flags FFLAGS="-std=legacy"/>
     <flags FOPTIMISEDFLAGS="-O3 @GCC_FOPTIMISEDFLAGS@"/>
     <flags FSHAREDOBJECTFLAGS="-fPIC @GCC_FSHAREDOBJECTFLAGS@"/>
   </tool>

@@ -1,15 +1,15 @@
   <tool type="compiler" revision="2">
     <client>
-#if @USE_SYSTEM_GCC@
-      <environment name="CXX" value="c++@COMPILER_NAME_SUFFIX@"/>
-#else
+#ifdef @GCC_REVISION@
       <environment name="CXX" value="$TOOL_BASE/bin/c++@COMPILER_NAME_SUFFIX@"/>
+#else
+      <environment name="CXX" value="c++@COMPILER_NAME_SUFFIX@"/>
 #endif
     </client>
     <flags CPPDEFINES="GNU_GCC _GNU_SOURCE @GCC_CPPDEFINES@"/>
     <flags CXXSHAREDOBJECTFLAGS="-fPIC @GCC_CXXSHAREDOBJECTFLAGS@"/>
     <flags CXXFLAGS="-O3 -pthread -pipe -Werror=main -Werror=pointer-arith"/>
-#if @ENABLE_FRAME_POINTER@
+#ifdef @ENABLE_FRAME_POINTER@
     <flags CXXFLAGS="-fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"/>
 #endif
     <flags CXXFLAGS="-Werror=overlength-strings -Wno-vla @GCC_CXXFLAGS@"/>
@@ -32,13 +32,11 @@
     <flags CXXFLAGS="-Wno-unused-local-typedefs -Wno-attributes -Wno-psabi"/>
     <flags CXXFLAGS="@GCC_WARNINGS@"/>
     <flags LTO_FLAGS="@LTO_FLAGS@"/>
-    <flags PGO_FLAGS="-fprofile-prefix-path=$(LOCALTOP) -fprofile-update=prefer-atomic -fprofile-correction"/>
     <flags LDFLAGS="@GCC_LDFLAGS@"/>
     <flags CXXSHAREDFLAGS="@GCC_SHAREDFLAGS@"/>
     <flags LD_UNIT="@GCC_LD_UNIT@"/>
     <runtime name="SCRAM_CXX11_ABI" value="@SCRAM_CXX11_ABI@"/>
-#if @USE_SYSTEM_GCC@
-#else
+#ifdef @GCC_REVISION@
     <runtime name="@OS_RUNTIME_LDPATH_NAME@" value="$TOOL_BASE/@OS_LIB64DIR@" type="path"/>
     <runtime name="@OS_RUNTIME_LDPATH_NAME@" value="$TOOL_BASE/lib" type="path"/>
     <runtime name="COMPILER_PATH" value="$TOOL_BASE"/>

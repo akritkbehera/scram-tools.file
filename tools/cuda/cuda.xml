@@ -11,7 +11,7 @@
   <flags REM_CUDA_HOST_CXXFLAGS="-std=%"/>
   <flags REM_CUDA_HOST_CXXFLAGS="%potentially-evaluated-expression"/>
   <flags CUDA_HOST_CXXFLAGS="@CUDA_HOST_CXXFLAGS@"/>
-#ifdef "@{default_microarch_name@"
+#if "@{default_microarch_name@"
   <flags REM_CUDA_HOST_CXXFLAGS="-march=%%"/>
   <flags CUDA_HOST_CXXFLAGS="-march=@default_microarch_name@"/>
 #endif

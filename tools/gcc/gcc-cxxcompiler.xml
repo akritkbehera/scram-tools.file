@@ -1,6 +1,6 @@
   <tool type="compiler" revision="2">
     <client>
-#ifdef @GCC_REVISION@
+#if @GCC_REVISION@
       <environment name="CXX" value="$TOOL_BASE/bin/c++@COMPILER_NAME_SUFFIX@"/>
 #else
       <environment name="CXX" value="c++@COMPILER_NAME_SUFFIX@"/>
@@ -9,7 +9,7 @@
     <flags CPPDEFINES="GNU_GCC _GNU_SOURCE @GCC_CPPDEFINES@"/>
     <flags CXXSHAREDOBJECTFLAGS="-fPIC @GCC_CXXSHAREDOBJECTFLAGS@"/>
     <flags CXXFLAGS="-O3 -pthread -pipe -Werror=main -Werror=pointer-arith"/>
-#ifdef @ENABLE_FRAME_POINTER@
+#if @ENABLE_FRAME_POINTER@
     <flags CXXFLAGS="-fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"/>
 #endif
     <flags CXXFLAGS="-Werror=overlength-strings -Wno-vla @GCC_CXXFLAGS@"/>
@@ -36,7 +36,7 @@
     <flags CXXSHAREDFLAGS="@GCC_SHAREDFLAGS@"/>
     <flags LD_UNIT="@GCC_LD_UNIT@"/>
     <runtime name="SCRAM_CXX11_ABI" value="@SCRAM_CXX11_ABI@"/>
-#ifdef @GCC_REVISION@
+#if @GCC_REVISION@
     <runtime name="@OS_RUNTIME_LDPATH_NAME@" value="$TOOL_BASE/@OS_LIB64DIR@" type="path"/>
     <runtime name="@OS_RUNTIME_LDPATH_NAME@" value="$TOOL_BASE/lib" type="path"/>
     <runtime name="COMPILER_PATH" value="$TOOL_BASE"/>

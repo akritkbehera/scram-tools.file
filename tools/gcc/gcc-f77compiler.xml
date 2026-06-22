@@ -2,7 +2,7 @@
     <lib name="gfortran"/>
     <lib name="m"/>
     <client>
-#ifdef @GCC_REVISION@
+#if @GCC_REVISION@
       <environment name="FC" default="$TOOL_BASE/bin/gfortran"/>
 #else
       <environment name="FC" default="gfortran"/>

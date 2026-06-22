@@ -1,5 +1,5 @@
 <tool revision="2">
-#ifdef @GCC_REVISION@
+#if @GCC_REVISION@
   <runtime name="ROOT_GCC_TOOLCHAIN" value="@GCC_ROOT@" type="path"/>
 #endif
   <runtime name="ROOT_INCLUDE_PATH" value="/usr/local/include" type="path" handler="warn"/>

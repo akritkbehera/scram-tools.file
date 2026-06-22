@@ -8,7 +8,7 @@ close $fh;
 my $do_tool_line = 1;
 for (@lines) {
   # Expand @VAR@
-  s/\@([A-Za-z0-9_-]+)\@/
+  s{\@([A-Za-z0-9_-]+)\@}{
     my $name = $1;
     my $val;
     if ($name =~ /_REVISION$/) {
@@ -17,8 +17,8 @@ for (@lines) {
       $val = defined $ENV{$name} ? $ENV{$name} : "";
     }
     warn "Replacing \@$name\@ with '$val'\n";
-    $val
-  /ge;
+    $val;
+  }ge;
   # Process <tool ...>
   if ($do_tool_line && /^\s*<tool\b/o) {
     $do_tool_line = 0;

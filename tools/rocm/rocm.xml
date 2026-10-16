@@ -1,8 +1,6 @@
-<tool revision="8">
+<tool revision="8" path="@ROCM_HIP_ROOT@">
   <info url="https://rocm.docs.amd.com/en/docs-@TOOL_REALVERSION@/"/>
   <lib name="amdhip64"/>
-  <lib name="hsa-runtime64"/>
-  <lib name="rocm_smi64"/>
   <client>
     <environment name="HIPCC"     default="$TOOL_BASE/bin/hipcc"/>
     <environment name="BINDIR"    default="$TOOL_BASE/bin"/>
@@ -26,4 +24,6 @@
   <runtime name="PATH" value="$TOOL_BASE/bin" type="path"/>
   <runtime name="HSA_XNACK" value="1"/>
   <use name="fmt"/>
+  <use name="rocr-runtime"/>
+  <use name="rocm-smi-lib"/>
 </tool>

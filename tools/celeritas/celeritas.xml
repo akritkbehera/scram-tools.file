@@ -4,7 +4,6 @@
   <lib name="celeritas"/>
   <lib name="geocel"/>
   <lib name="corecel"/>
-  <lib name="g4vg"/>
   <client>
     <environment name="INCLUDE" default="$TOOL_BASE/include"/>
     <environment name="LIBDIR" default="$TOOL_BASE/lib64"/>
@@ -13,6 +12,7 @@
   <use name="geant4core"/>
   <use name="expat"/>
   <use name="xerces-c"/>
+  <use name="g4vg"/>
 #if %(enable_vecgeom:-0)s
   <use name="vecgeom_interface"/>
   <use name="vecgeom"/>

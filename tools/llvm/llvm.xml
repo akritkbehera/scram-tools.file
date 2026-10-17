@@ -9,4 +9,7 @@
     <flags CXXFLAGS="-D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -O3 "/>
     <flags CXXFLAGS="-fomit-frame-pointer -fPIC -Wno-enum-compare "/>
     <flags CXXFLAGS="-Wno-strict-aliasing -fno-rtti"/>
-  </tool>
+    <runtime name="PYTHON3PATH" value="$TOOL_BASE/lib64/python3.12/site-packages" type="path"/>
+  <runtime name="LD_LIBRARY_PATH" value="$TOOL_BASE/lib64" type="path"/>
+  <runtime name="PATH" value="$TOOL_BASE/bin" type="path"/>
+</tool>

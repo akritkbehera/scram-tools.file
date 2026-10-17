@@ -2,4 +2,5 @@
   <client>
     <environment name="INCLUDE" default="$TOOL_BASE/@PYTHON3_LIB_SITE_PACKAGES@/tensorflow/include"/>
   </client>
+  <use name="abseil-cpp"/>
 </tool>

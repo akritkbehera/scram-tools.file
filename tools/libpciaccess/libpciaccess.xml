@@ -1,5 +1,5 @@
 <tool revision="3">
-  <lib name="libpciaccess"/>
+  <lib name="pciaccess"/>
   <client>
     <environment name="LIBDIR"            default="$TOOL_BASE/lib"/>
     <environment name="INCLUDE"           default="$TOOL_BASE/include"/>

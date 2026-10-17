@@ -1,6 +1,6 @@
 <tool revision="3">
   <info url="http://www.pcre.org"/>
-  <lib name="pcre2"/>
+  <lib name="pcre2-8"/>
   <client>
     <environment name="LIBDIR" default="$TOOL_BASE/lib"/>
     <environment name="INCLUDE" default="$TOOL_BASE/include"/>

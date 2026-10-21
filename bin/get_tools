@@ -19,17 +19,50 @@ export TOOL_VERSION=$2
 export TOOLFILES_INSTALL_DIR=$3
 export TOOL=$4
 export SCRAM_TOOLS_BIN_DIR=$(dirname $(realpath ${0}))
-export SCRAM_TOOL_SOURCE_DIR=$(realpath ${SCRAM_TOOLS_BIN_DIR}/../tools)/$4
+TOOL_SOURCE_ROOT=$(realpath "${SCRAM_TOOLS_BIN_DIR}/../tools")
+SCRAM_TOOL_SOURCE_DIR="${TOOL_SOURCE_ROOT}/$4"
+
+# Tool directories are not consistently named with the same capitalization
+# as the package in FULL_REQUIRES (for example, ROOT -> tools/root). Prefer an
+# exact match, then use a case-insensitive fallback when it is unambiguous.
+if [ ! -d "$SCRAM_TOOL_SOURCE_DIR" ]; then
+  tool_source_matches=()
+  while IFS= read -r -d '' candidate; do
+    tool_source_matches+=("$candidate")
+  done < <(find "$TOOL_SOURCE_ROOT" -mindepth 1 -maxdepth 1 -type d -iname "$4" -print0)
+
+  if [ "${#tool_source_matches[@]}" -eq 1 ]; then
+    SCRAM_TOOL_SOURCE_DIR=${tool_source_matches[0]}
+  elif [ "${#tool_source_matches[@]}" -gt 1 ]; then
+    echo "Ambiguous case-insensitive tool directory match for '$4': ${tool_source_matches[*]}" >&2
+  fi
+fi
+
+# Some Python dependencies are installed as py-* packages, while their
+# SCRAM tool definitions are kept under the corresponding py3-* directory.
+# Include both directories when present: py-* may contain package-specific
+# link settings, and py3-* may contain the C++ tool definitions (e.g. pytorch).
+SCRAM_TOOL_SOURCE_DIRS=()
+if [ -d "$SCRAM_TOOL_SOURCE_DIR" ]; then
+  SCRAM_TOOL_SOURCE_DIRS+=("$SCRAM_TOOL_SOURCE_DIR")
+fi
+if [[ "$4" == py-* ]]; then
+  py3_tool_name="py3-${4#py-}"
+  py3_tool_source_dir="${TOOL_SOURCE_ROOT}/${py3_tool_name}"
+  if [ -d "$py3_tool_source_dir" ] && [[ ! " ${SCRAM_TOOL_SOURCE_DIRS[*]} " == *" $py3_tool_source_dir "* ]]; then
+    SCRAM_TOOL_SOURCE_DIRS+=("$py3_tool_source_dir")
+  fi
+fi
 
 [ -d ${TOOLFILES_INSTALL_DIR}/tools/selected ] || mkdir -p ${TOOLFILES_INSTALL_DIR}/tools/selected
-if [ -d $SCRAM_TOOL_SOURCE_DIR ] ; then
+for SCRAM_TOOL_SOURCE_DIR in "${SCRAM_TOOL_SOURCE_DIRS[@]}"; do
   #setup tools specific env
   tool_script=${SCRAM_TOOL_SOURCE_DIR}/env.sh
   if [ -f $tool_script ]; then source $tool_script; fi
 
   #Copy all tools and replace the env placeholders @VARIABLES@
   copy_tools $SCRAM_TOOL_SOURCE_DIR
-fi
+done
 if [ -d ${TOOL_ROOT}/etc/scram.d ] ; then
     copy_tools ${TOOL_ROOT}/etc/scram.d
 fi

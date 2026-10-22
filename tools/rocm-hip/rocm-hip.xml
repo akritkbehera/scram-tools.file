@@ -9,7 +9,6 @@
   <flags SYSTEM_INCLUDE="1"/>
   <runtime name="ROOT_INCLUDE_PATH" value="$INCLUDE" type="path" join="1"/>
   <runtime name="PATH" value="$TOOL_BASE/bin" type="path"/>
-  <runtime name="HIP_PATH" value="$TOOL_BASE" type="path"/>
 </client>
 <use name="rocm-llvm"/>
 <use name="rocm-comgr"/>

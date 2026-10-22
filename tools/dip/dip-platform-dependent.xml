@@ -1,4 +1,5 @@
-<tool revision="2">
-  <lib name="platform-dependent"/>
+<tool revision="3">
+  <!-- DIP 6.6.2 no longer installs a separate platform-dependent library.
+       Keep this tool as a compatibility alias for existing consumers. -->
   <use name="dip_interface"/>
 </tool>

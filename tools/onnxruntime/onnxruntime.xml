@@ -5,8 +5,13 @@
     <environment name="LIBDIR" default="$TOOL_BASE/lib"/>
   </client>
   <use name="protobuf"/>
+#ifdef @CUDA_ROOT@
   <use name="cuda"/>
   <use name="cudnn"/>
+#endif
+#ifdef @ROCM_ROOT@
+  <use name="migraphx"/>
+#endif
   <use name="re2"/>
   <runtime name="MLAS_DYNAMIC_CPU_ARCH" value="2"/>
 </tool>

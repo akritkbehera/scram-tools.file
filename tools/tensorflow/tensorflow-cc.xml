@@ -4,4 +4,5 @@
   <use name="eigen"/>
   <use name="libpng"/>
   <use name="sqlite"/>
+  <flags FORCE_LINK="1"/>
 </tool>

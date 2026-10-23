@@ -1,6 +1,6 @@
-<tool revision="3">
+<tool revision="4">
   <use name="alpaka"/>
   <client>
-    <environment name="INCLUDE"   default="$TOOL_BASE/include"/>
+    <environment name="INCLUDE"   default="$TOOL_BASE/include/include"/>
   </client>
 </tool>

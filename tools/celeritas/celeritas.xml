@@ -13,7 +13,7 @@
   <use name="expat"/>
   <use name="xerces-c"/>
   <use name="g4vg"/>
-#if %(enable_vecgeom:-0)s
+#if @VECGEOM_REVISION@
   <use name="vecgeom_interface"/>
   <use name="vecgeom"/>
 #endif

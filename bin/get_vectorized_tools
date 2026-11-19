@@ -1,23 +1,47 @@
-#!/bin/bash -ex
-#Usage: get_tool <tool-install-dir> <tool-version> <directory-to-install-toolfiles> <toolname> <vectorization>
+#!/bin/bash
+set -euo pipefail
 
-export TOOL_ROOT=$1
-export TOOL_VERSION=$2
-export TOOL_REALVERSION=$(echo $TOOL_VERSION | sed -re 's|-[a-f0-9]{32}$||')
-export TOOLFILES_INSTALL_DIR=$3
-export SCRAM_TOOLS_BIN_DIR=$(dirname $(realpath ${0}))
-export SCRAM_TOOL_SOURCE_DIR=$(realpath ${SCRAM_TOOLS_BIN_DIR}/../tools)/$4
-export TOOL_VECTORIZATION=$5
+# Usage: get_vectorized_tools <tool-root> <version> <toolbox> <tool> <target>
+export TOOL_ROOT="$1" TOOL_VERSION="$2" TOOL_VECTORIZATION="$5"
+export TOOL_REALVERSION
+TOOL_REALVERSION=$(sed -E 's/-[a-f0-9]{32,40}$//' <<< "$TOOL_VERSION")
+toolbox=$3
+toolname=$4
+bin_dir=$(dirname "$(realpath "$0")")
+tool_source_root=$(realpath "$bin_dir/../tools")
+tool_dir="$tool_source_root/$toolname"
 
-#exit if no tool directory found. Not all tools have scram toolfiles
-[ -d $SCRAM_TOOL_SOURCE_DIR ] || exit 0
-
-xml="$SCRAM_TOOL_SOURCE_DIR/vectorized.tmpl"
-if [ -f $xml ] ; then
-  bxml="${4}_${5}.xml"
-  [ -f ${TOOLFILES_INSTALL_DIR}/tools/selected/$bxml ] && continue
-  [ -f ${TOOLFILES_INSTALL_DIR}/tools/available/$bxml ] && continue
-  cp ${xml} ${TOOLFILES_INSTALL_DIR}/tools/selected/${bxml}
-  export TOOL_VECTORIZATION_KEY=$(echo $5 | tr '[a-z-]' '[A-Z_]')
-  $SCRAM_TOOLS_BIN_DIR/fix_tool_variables "${TOOLFILES_INSTALL_DIR}/tools/selected/${bxml}"
+if [[ ! -d "$tool_dir" ]]; then
+  matches=()
+  while IFS= read -r -d '' candidate; do
+    name=${candidate##*/}
+    if [[ "${name,,}" == "${toolname,,}" ]]; then
+      matches+=("$candidate")
+    fi
+  done < <(find "$tool_source_root" -mindepth 1 -maxdepth 1 -type d -print0)
+  if (( ${#matches[@]} == 0 )); then
+    exit 0
+  elif (( ${#matches[@]} > 1 )); then
+    echo "Ambiguous tool directory for '$toolname': ${matches[*]}" >&2
+    exit 1
+  fi
+  tool_dir=${matches[0]}
 fi
+
+template="$tool_dir/vectorized.tmpl"
+[[ -f "$template" ]] || exit 0
+export TOOL_FILENAME="${toolname,,}_$TOOL_VECTORIZATION"
+export TOOL_VECTORIZATION_KEY
+TOOL_VECTORIZATION_KEY=$(printf '%s' "$TOOL_VECTORIZATION" | tr 'a-z-' 'A-Z_')
+filename="$TOOL_FILENAME.xml"
+if [[ -e "$toolbox/tools/selected/$filename" || -e "$toolbox/tools/available/$filename" ]]; then
+  exit 0
+fi
+mkdir -p "$toolbox/tools/selected"
+output="$toolbox/tools/selected/$filename"
+tmp=$(mktemp "$output.XXXXXX")
+trap 'rm -f "$tmp"' EXIT
+cp "$template" "$tmp"
+chmod 0644 "$tmp"
+perl "$bin_dir/fix_tool_variables" "$tmp"
+mv "$tmp" "$output"

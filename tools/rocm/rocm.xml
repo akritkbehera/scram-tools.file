@@ -10,7 +10,7 @@
   <flags CPPDEFINES="__HIP_PLATFORM_HCC__ __HIP_PLATFORM_AMD__"/>
   <!-- ROCm's split packages use rocm-llvm for device bitcode and rocm-hip
        for the HIP runtime headers/libraries. -->
-  <flags ROCM_FLAGS="--rocm-path=$ROCM_PATH --hip-path=$TOOL_BASE"/>
+  <flags ROCM_FLAGS="--rocm-path=@ROCM_LLVM_ROOT@ --hip-path=$TOOL_BASE"/>
   <flags ROCM_FLAGS="@ROCM_FLAGS@"/>
   <flags ROCM_FLAGS="-fgpu-rdc"/>
   <flags ROCM_FLAGS="-foffload-lto"/>
